@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Update</title>
+</head>
+<body>
+<div>
+  <h3>Customer Update</h3>
+  <div>
+    <form method="post">
+      <div>
+        <label>CUSTOMER ID : </label>
+        <input th:value="${item.customerId}" type="number" name="customerId" readonly>
+      </div>
+
+      <div>
+        <label>Name : </label>
+        <input th:value="${item.name}" type="text" name="name">
+      </div>
+
+      <div>
+        <label>Address : </label>
+        <input th:value="${item.address}" type="text" name="address">
+      </div>
+
+      <div>
+        <label>Phone : </label>
+        <input th:value="${item.phone}" type="text" name="phone">
+      </div>
+
+      <div>
+        <button>submit</button>
+        <a href="../list"><button type="button">cancel</button></a>
+      </div>
+      
+    </form>
+  </div>
+</div>
+</body>
+</html>

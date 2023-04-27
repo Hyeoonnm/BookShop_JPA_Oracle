@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book List</title>
+</head>
+<body>
+<div>
+    <h3>도서 목록</h3>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>도서 번호</th>
+                <th>도서 이름</th>
+                <th>출판사</th>
+                <th>도서 가격</th>
+                <th>관리</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:if="${list.size() < 1}">
+                <td colspan="5">Nothing</td>
+            </tr>
+
+            <tr th:each="book : ${list}">
+                <td th:text="${book.bookId}"></td>
+                <td th:text="${book.bookName}"></td>
+                <td th:text="${book.price}"></td>
+                <td th:text="${book.publisher}"></td>
+                <td><a th:href="@{update/{id} (id = ${book.bookId})}"> Update</a> <a th:href="@{delete/{id} (id = ${book.bookId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a href="add">add</a>
+    </div>
+</div>
+</body>
+</html>

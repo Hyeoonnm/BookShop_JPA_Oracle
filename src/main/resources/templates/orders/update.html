@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders Update</title>
+</head>
+<body>
+<div>
+  <h3>Orders Update</h3>
+  <div>
+    <form method="post">
+      <div>
+        <label>Customer Name : </label>
+        <select name="customerId">
+          <option th:each="customers : ${customer}" th:value="${customers.customerId}" th:text="${customers.name}"
+                  th:selected="${customers.customerId == item.customerId}"></option>
+        </select>
+      </div>
+
+      <div>
+        <label>Book Name : </label>
+        <select name="bookId">
+          <option th:each="books : ${book}" th:value="${books.bookId}" th:text="${books.bookName}"
+                  th:selected="${books.bookId == item.bookId}"></option>
+        </select>
+      </div>
+
+      <div>
+        <label>price : </label>
+        <input th:value="${item.saleprice}" type="text" name="saleprice">
+      </div>
+
+      <div>
+        <button>submit</button>
+        <a href="../list"><button type="button">cancel</button></a>
+      </div>
+      
+    </form>
+  </div>
+</div>
+</body>
+</html>

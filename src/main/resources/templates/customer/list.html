@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+</head>
+<body>
+<div>
+    <h3>Customer List</h3>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>CUSTOMER ID</th>
+                <th>NAME</th>
+                <th>ADDRESS</th>
+                <th>PHONE</th>
+                <th>CONTROL</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:if="${list.size() < 1}">
+                <td colspan="5">Nothing</td>
+            </tr>
+
+            <tr th:each="customer : ${list}">
+                <td th:text="${customer.customerId}"></td>
+                <td th:text="${customer.name}"></td>
+                <td th:text="${customer.address}"></td>
+                <td th:text="${customer.phone}"></td>
+                <td><a th:href="@{update/{id} (id = ${customer.customerId})}"> Update</a> <a th:href="@{delete/{id} (id = ${customer.customerId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a href="add">add</a>
+    </div>
+</div>
+</body>
+</html>

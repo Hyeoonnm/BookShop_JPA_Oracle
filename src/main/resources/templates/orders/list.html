@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders List</title>
+</head>
+<body>
+<div>
+    <h3>Orders List</h3>
+    <div>
+        <table border="1">
+            <thead>
+            <tr>
+                <th>ORDERS ID</th>
+                <th>CUSTOMER ID</th>
+                <th>BOOK ID</th>
+                <th>SALE PRICE</th>
+                <th>ORDER DATE</th>
+                <th>CONTROL</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:if="${list.size() < 1}">
+                <td colspan="6">Nothing</td>
+            </tr>
+
+            <tr th:each="orders : ${list}">
+                <td th:text="${orders.ordersId}"></td>
+                <td th:text="${orders.customer.name}"></td>
+                <td th:text="${orders.book.bookName}"></td>
+                <td th:text="${orders.saleprice}"></td>
+                <td th:text="${orders.orderdate}"></td>
+                <td><a th:href="@{update/{id} (id = ${orders.ordersId})}"> Update</a> <a th:href="@{delete/{id} (id = ${orders.ordersId})}">Delete</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a href="add">add</a>
+    </div>
+</div>
+</body>
+</html>
